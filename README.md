@@ -31,10 +31,10 @@ Each group member must contribute equally. The application must:
 
 npm create vite@latest task8-clientside -- --template react
 
-This is how your directory structure will look like:
-* COMPX575-task8/
- &nbsp;  &ensp;  * task8-clientside/   (React Frontend)
-  &nbsp;  &ensp; * task7-COMPX575/     (Express Backend)
+This is how your directory structure will look like:<br />
+* COMPX575-task8/<br />
+ &nbsp;  &ensp;  * task8-clientside/   (React Frontend)<br />
+  &nbsp;  &ensp; * task7-COMPX575/     (Express Backend)<br />
 
 
 
