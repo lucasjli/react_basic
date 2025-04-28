@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import StaticExample from "./logic/AddItemModal.jsx";
+import AddItemModal from "./logic/AddItemModal.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemsTable from "./components/ItemsTable.jsx";
 import ItemForm from "./components/ItemForm.jsx";
@@ -31,7 +31,7 @@ function App() {
             <div onClick={handleAddClick}>
                 <AddButton/>
             </div>
-            {showModal && <StaticExample onClose={handleModalClose} onItemAdded={handleItemAdded}/>}
+            {showModal && <AddItemModal onClose={handleModalClose} onItemAdded={handleItemAdded}/>}
         </>
     )
 }
