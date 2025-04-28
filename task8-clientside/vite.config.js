@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:3000',  // Proxy all /api requests to the backend server
+      '/api': {
+        target: 'http://localhost:3000', // Backend server
+        changeOrigin: true,  // Ensures proper handling of origins
+        rewrite: (path) => path.replace(/^\/api/, '')  // Rewrite /api/* to /api/*
+      }
     }
   }
 })
