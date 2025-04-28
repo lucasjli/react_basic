@@ -6,7 +6,7 @@ import axios from 'axios';
 import store from "../store/index.jsx";
 import { deleteItemById } from "../logic/actions.jsx"; // Import axios
 
-function BasicExample() {
+function BasicExample({ refreshFlag }) {
     // State to store the items data
     const [items, setItems] = useState([]);
     // State to handle loading or errors
@@ -27,8 +27,8 @@ function BasicExample() {
     };
 
     useEffect(() => {
-        fetchData(); // Initial fetch
-    }, []); // Empty dependency array to only run once when the component mounts
+        fetchData(); // Re-fetch data whenever refreshFlag changes
+    }, [refreshFlag]); // Re-fetch data when refreshFlag changes
 
     if (loading) {
         return <div>Loading...</div>; // Show loading message while fetching data

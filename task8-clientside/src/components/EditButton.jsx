@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 
-function TypesExample() {
+function EditButton() {
     return (
         <>
             <Button variant="primary">Edit</Button>
@@ -8,4 +8,4 @@ function TypesExample() {
     );
 }
 
-export default TypesExample;
+export default EditButton;

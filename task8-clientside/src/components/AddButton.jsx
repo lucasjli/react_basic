@@ -1,11 +1,11 @@
 import Button from 'react-bootstrap/Button';
 
-function TypesExample() {
+function AddButton() {
     return (
         <>
-            <Button variant="primary">Add</Button>
+            <Button variant="success">Add Item</Button>
         </>
     );
 }
 
-export default TypesExample;
+export default AddButton;
