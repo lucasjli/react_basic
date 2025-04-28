@@ -4,7 +4,7 @@ import ItemForm from "../components/ItemForm.jsx";
 import Form from "react-bootstrap/Form";
 import {Col, Row} from "react-bootstrap";
 import {useState} from "react";
-import ItemAPI from "../api/Item.jsx";
+import { createItem } from "./actions.jsx";
 
 function AddItemModal({ onClose, onItemAdded }) {
     const [show, setShow] = useState(true);
@@ -18,12 +18,7 @@ function AddItemModal({ onClose, onItemAdded }) {
 
     const handleFormSubmit = async (formData) => {
         try {
-            const response = await ItemAPI.createItem(
-                formData.itemname,
-                formData.category,
-                formData.price,
-                formData.quantity
-            );
+            const response = await createItem(formData);
             if (response.status === 201) {
                 console.log('Item created successfully');
                 if (onItemAdded) {
