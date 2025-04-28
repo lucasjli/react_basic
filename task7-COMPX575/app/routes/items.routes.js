@@ -15,7 +15,7 @@ module.exports = app => {
     // updateItemsByID
     router.put('/updateItemsByID', itemsController.updateItemsByID);
     // deleteItemsByID
-    router.delete('/deleteItemsByID', itemsController.deleteItemsByID);
+    router.post('/deleteItemsByID', itemsController.deleteItemsByID);
     // deleteAllItems
     router.delete('/deleteAllItems', itemsController.deleteAllItems);
 

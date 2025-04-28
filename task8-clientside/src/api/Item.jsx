@@ -1,74 +1,99 @@
 import store from "../store/index";
-// import qs from "qs";
+import qs from "qs";
 import axios from "axios"
 
 const ItemAPI = {
 
     // create Item
-    createItem() {
-        return axios.post(store.urls.createItem);
+    /**
+     *
+     * @param itemname
+     * @param category
+     * @param price
+     * @param quantity
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     */
+    createItem(itemname, category, price, quantity) {
+        return axios.post(
+            store.urls.createItem,
+            qs.stringify({
+                itemname,
+                category,
+                price,
+                quantity,
+            })
+        );
     },
+
+    /**
+     *
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     */
     retrieveAllItems() {
         return axios.get(store.urls.retrieveAllItems)
     },
-    retrieveItemsByID() {
-        return axios.get(store.urls.retrieveItemsByID)
+
+    /**
+     *
+     * @param id
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     */
+    retrieveItemsByID(id) {
+        return axios.get(store.urls.retrieveItemsByID + "?id=" + id)
     },
-    retrieveItemsByItemName() {
-        return axios.get(store.urls.retrieveItemsByID)
+
+    /**
+     *
+     * @param itemname
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     */
+    retrieveItemsByItemName(itemname) {
+        return axios.get(store.urls.retrieveItemsByItemName + "?itemname=" + itemname)
     },
-    updateItemsByID() {
-        return axios.put(store.urls.retrieveItemsByID)
+
+    /**
+     *
+     * @param id
+     * @param itemname
+     * @param category
+     * @param price
+     * @param quantity
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     */
+    updateItemsByID(id, itemname, category, price, quantity) {
+        return axios.put(
+            store.urls.retrieveItemsByID,
+            qs.stringify({
+                id,
+                itemname,
+                category,
+                price,
+                quantity
+            })
+        )
     },
-    deleteItemsByID() {
-        return axios.delete(store.urls.retrieveItemsByID)
+
+    /**
+     *
+     * @param id
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     */
+    deleteItemsByID(id) {
+        return axios.post(
+            store.urls.retrieveItemsByID,
+            qs.stringify({
+                id
+            })
+        )
     },
+
+    /**
+     *
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     */
     deleteAllItems() {
         return axios.delete(store.urls.retrieveAllItems)
     },
-
-
-
-    /**
-     * Passkeys - 完成注册
-     * @param credential
-     * @param userId
-     * @param publicKeyCredentialCreationOptionsJson
-     */
-    finishRegistration(credential, userId, publicKeyCredentialCreationOptionsJson) {
-        return axios.post(
-            store.urls.passkeys.registration.finish,
-            qs.stringify({
-                credential,
-                userId,
-                publicKeyCredentialCreationOptionsJson
-            })
-        );
-    },
-
-    /**
-     * Passkeys - 申请登录
-     */
-    requestLogin() {
-        return axios.post(store.urls.passkeys.login.request);
-    },
-
-    /**
-     * Passkeys - 完成登录
-     * @param credential
-     * @param assertionRequest
-     * @param type
-     */
-    finishLogin(credential, assertionRequest, type) {
-        return axios.post(
-            store.urls.passkeys.login.finish,
-            qs.stringify({
-                credential,
-                assertionRequest,
-                type,
-            })
-        );
-    }
 };
 
 export default ItemAPI;
