@@ -3,7 +3,8 @@ import Table from 'react-bootstrap/Table';
 import EditButton from "./EditButton.jsx";
 import CloseButton from "react-bootstrap/CloseButton";
 import axios from 'axios';
-import store from "../store/index.jsx"; // Import axios
+import store from "../store/index.jsx";
+import {deleteItemById} from "./actions.jsx"; // Import axios
 
 function BasicExample() {
     // State to store the items data
@@ -60,7 +61,14 @@ function BasicExample() {
                     <td>{item.quantity}</td>
                     <td>
                         <EditButton />
-                        <CloseButton />
+                        <CloseButton onClick={() => {
+                            // console.log("delete item: " + item.id);
+                            deleteItemById(item.id).then(r => {
+                                if (r.status == 200) {
+                                    console.log("successfully deleted");
+                                }
+                            })
+                        }}/>
                     </td>
                 </tr>
             ))}
