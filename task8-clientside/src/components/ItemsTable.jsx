@@ -4,7 +4,7 @@ import EditButton from "./EditButton.jsx";
 import CloseButton from "react-bootstrap/CloseButton";
 import axios from 'axios';
 import store from "../store/index.jsx";
-import {deleteItemById} from "../logic/actions.jsx"; // Import axios
+import { deleteItemById } from "../logic/actions.jsx"; // Import axios
 
 function BasicExample() {
     // State to store the items data
@@ -14,21 +14,20 @@ function BasicExample() {
     const [error, setError] = useState(null);
 
     // Fetch data from API using the retrieveAllItems method
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Fetch data using the retrieveAllItems method
-                const response = await axios.get(store.urls.retrieveAllItems);
-                setItems(response.data); // Set the data into state
-                setLoading(false); // Set loading to false after data is fetched
-            } catch (error) {
-                console.log(error);
-                setError('Error fetching data'); // Set error state
-                setLoading(false); // Set loading to false even if there's an error
-            }
-        };
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(store.urls.retrieveAllItems);
+            setItems(response.data); // Set the data into state
+            setLoading(false); // Set loading to false after data is fetched
+        } catch (error) {
+            console.log(error);
+            setError('Error fetching data'); // Set error state
+            setLoading(false); // Set loading to false even if there's an error
+        }
+    };
 
-        fetchData();
+    useEffect(() => {
+        fetchData(); // Initial fetch
     }, []); // Empty dependency array to only run once when the component mounts
 
     if (loading) {
@@ -64,10 +63,13 @@ function BasicExample() {
                         <CloseButton onClick={() => {
                             // console.log("delete item: " + item.id);
                             deleteItemById(item.id).then(r => {
-                                if (r.status == 200) {
-                                    console.log("successfully deleted");
+                                if (r.status === 200) {
+                                    console.log("Successfully deleted");
+                                    fetchData(); // Re-fetch data after deletion to update the table
                                 }
-                            })
+                            }).catch(err => {
+                                console.log("Error deleting item:", err);
+                            });
                         }}/>
                     </td>
                 </tr>

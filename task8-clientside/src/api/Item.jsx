@@ -80,7 +80,7 @@ const ItemAPI = {
      */
     deleteItemsByID(id) {
         return axios.post(
-            store.urls.retrieveItemsByID,
+            store.urls.deleteItemsByID,
             qs.stringify({
                 id
             })
