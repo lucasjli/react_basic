@@ -1,12 +1,12 @@
 const store = {
     urls: {
-        createItem: '/createItem',
-        retrieveAllItems: '/retrieveAllItems',
-        retrieveItemsByID: '/retrieveItemsByID',
-        retrieveItemsByItemName: '/retrieveItemsByItemName',
-        updateItemsByID: '/updateItemsByID',
-        deleteItemsByID: '/deleteItemsByID',
-        deleteAllItems: '/deleteAllItems',
+        createItem: '/api/createItem',
+        retrieveAllItems: '/api/retrieveAllItems',
+        retrieveItemsByID: '/api/retrieveItemsByID',
+        retrieveItemsByItemName: '/api/retrieveItemsByItemName',
+        updateItemsByID: '/api/updateItemsByID',
+        deleteItemsByID: '/api/deleteItemsByID',
+        deleteAllItems: '/api/deleteAllItems',
     }
 };
 
