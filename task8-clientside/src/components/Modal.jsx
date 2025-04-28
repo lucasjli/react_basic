@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import ItemForm from "./ItemForm.jsx";
 
 function StaticExample() {
     return (
@@ -8,18 +9,19 @@ function StaticExample() {
             style={{ display: 'block', position: 'initial' }}
         >
             <Modal.Dialog>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
-                </Modal.Header>
+                {/*<Modal.Header closeButton>*/}
+                {/*    <Modal.Title>Modal title</Modal.Title>*/}
+                {/*</Modal.Header>*/}
 
                 <Modal.Body>
                     <p>Modal body text goes here.</p>
+                    <ItemForm/>
                 </Modal.Body>
 
-                <Modal.Footer>
-                    <Button variant="secondary">Close</Button>
-                    <Button variant="primary">Save changes</Button>
-                </Modal.Footer>
+                {/*<Modal.Footer>*/}
+                {/*    <Button variant="secondary">Close</Button>*/}
+                {/*    <Button variant="primary">Save changes</Button>*/}
+                {/*</Modal.Footer>*/}
             </Modal.Dialog>
         </div>
     );
