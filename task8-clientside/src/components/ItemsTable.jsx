@@ -4,7 +4,7 @@ import EditButton from "./EditButton.jsx";
 import CloseButton from "react-bootstrap/CloseButton";
 import axios from 'axios';
 import store from "../store/index.jsx";
-import {deleteItemById} from "./actions.jsx"; // Import axios
+import {deleteItemById} from "../logic/actions.jsx"; // Import axios
 
 function BasicExample() {
     // State to store the items data
