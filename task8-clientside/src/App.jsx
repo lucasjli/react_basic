@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,39 +7,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemsTable from "./components/ItemsTable.jsx";
 import ItemForm from "./components/ItemForm.jsx";
 import AddButton from "./components/AddButton.jsx";
+
 function App() {
     // const [count, setCount] = useState(0)
 
     return (
         <>
-            {/*<div>*/}
-            {/*    <a href="https://vite.dev" target="_blank">*/}
-            {/*        <img src={viteLogo} className="logo" alt="Vite logo" />*/}
-            {/*    </a>*/}
-            {/*    <a href="https://react.dev" target="_blank">*/}
-            {/*        <img src={reactLogo} className="logo react" alt="React logo" />*/}
-            {/*    </a>*/}
-            {/*</div>*/}
-            {/*<StaticExample/>*/}
-            {/*<br/>*/}
-            {/*<ItemForm/>*/}
-            <div style={{ float: 'left' }}>
-                <AddButton/>
-                <h2>Items</h2>
+            <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingBottom: '10px' }}>
+                    <h2 style={{ margin: 0 }}>Items</h2>
+                    <div style={{ marginTop: '50px' }}>
+                        <AddButton />
+                    </div>
+                </div>
+
+                <ItemsTable/>
             </div>
-            <ItemsTable/>
-            {/*<h1>Vite + React</h1>*/}
-            {/*<div className="card">*/}
-            {/*    <button onClick={() => setCount((count) => count + 1)}>*/}
-            {/*        count is {count}*/}
-            {/*    </button>*/}
-            {/*    <p>*/}
-            {/*        Edit <code>src/App.jsx</code> and save to test HMR*/}
-            {/*    </p>*/}
-            {/*</div>*/}
-            {/*<p className="read-the-docs">*/}
-            {/*    Click on the Vite and React logos to learn more*/}
-            {/*</p>*/}
         </>
     )
 }
