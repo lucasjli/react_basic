@@ -1,12 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {Col, Row} from "react-bootstrap";
-import {useState} from "react";
+import {useState, useEffect, forwardRef} from "react";
 import ItemAPI from "../api/Item.jsx";
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 
-function ItemForm({ onSubmit }) {
+const ItemForm = forwardRef(({ onSubmit, initialData }, ref) => {
     const [formData, setFormData] = useState({
         itemname: '',
         category: '',
@@ -16,6 +16,17 @@ function ItemForm({ onSubmit }) {
 
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
+
+    useEffect(() => {
+        if (initialData) {
+            setFormData({
+                itemname: initialData.itemname,
+                category: initialData.category,
+                price: initialData.price,
+                quantity: initialData.quantity
+            });
+        }
+    }, [initialData]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -43,7 +54,7 @@ function ItemForm({ onSubmit }) {
 
     return (
         <>
-            <Form onSubmit={handleSubmit} id="itemForm">
+            <Form ref={ref} onSubmit={handleSubmit} id="itemForm">
                 <Form.Group as={Row} className="mb-3" controlId="formItemName">
                     <Form.Label column sm="4">Item Name:</Form.Label>
                     <Col sm="8">
@@ -117,6 +128,6 @@ function ItemForm({ onSubmit }) {
             </ToastContainer>
         </>
     );
-}
+});
 
 export default ItemForm;

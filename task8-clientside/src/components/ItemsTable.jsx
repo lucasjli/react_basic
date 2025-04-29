@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import EditButton from "./EditButton.jsx";
-import CloseButton from "react-bootstrap/CloseButton";
 import axios from 'axios';
 import store from "../store/index.jsx";
-import { deleteItemById } from "../logic/actions.jsx"; // Import axios
+import { deleteItemById } from "../logic/actions.jsx";
+import DeleteButton from "./DeleteButton.jsx"; // Import axios
 
 function BasicExample({ refreshFlag }) {
     // State to store the items data
@@ -59,8 +59,11 @@ function BasicExample({ refreshFlag }) {
                     <td>{item.price}</td>
                     <td>{item.quantity}</td>
                     <td>
-                        <EditButton />
-                        <CloseButton onClick={() => {
+                        <EditButton 
+                            item={item} 
+                            onItemUpdated={fetchData}
+                        />
+                        <DeleteButton onClick={() => {
                             // console.log("delete item: " + item.id);
                             deleteItemById(item.id).then(r => {
                                 if (r.status === 200) {

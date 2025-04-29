@@ -12,3 +12,13 @@ export function createItem(data) {
         data.quantity
     );
 }
+
+export function updateItem(data) {
+    return ItemAPI.updateItemsByID(
+        data.id,
+        data.itemname,
+        data.category,
+        data.price,
+        data.quantity
+    );
+}

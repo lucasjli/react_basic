@@ -3,7 +3,6 @@ import './App.css'
 import AddItemModal from "./logic/AddItemModal.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemsTable from "./components/ItemsTable.jsx";
-import ItemForm from "./components/ItemForm.jsx";
 import AddButton from "./components/AddButton.jsx";
 
 function App() {

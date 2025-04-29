@@ -62,7 +62,7 @@ const ItemAPI = {
      */
     updateItemsByID(id, itemname, category, price, quantity) {
         return axios.put(
-            store.urls.retrieveItemsByID,
+            store.urls.updateItemsByID,
             qs.stringify({
                 id,
                 itemname,
