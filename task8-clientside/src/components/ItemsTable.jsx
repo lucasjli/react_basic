@@ -21,7 +21,7 @@ function BasicExample({ refreshFlag }) {
             setLoading(false); // Set loading to false after data is fetched
         } catch (error) {
             console.log(error);
-            setError('Error fetching data'); // Set error state
+            setError('Table is empty, please add some items'); // Set error state
             setLoading(false); // Set loading to false even if there's an error
         }
     };
