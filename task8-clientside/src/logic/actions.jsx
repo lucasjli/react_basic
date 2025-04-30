@@ -1,4 +1,4 @@
-import ItemAPI from "../api/Item.jsx";
+import ItemAPI from "../api/ItemAPI.jsx";
 
 export function deleteItemById(id) {
     return ItemAPI.deleteItemsByID(id)
