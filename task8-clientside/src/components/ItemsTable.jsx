@@ -4,7 +4,8 @@ import EditButton from "./EditButton.jsx";
 import axios from 'axios';
 import store from "../store/index.jsx";
 import { deleteItemById } from "../logic/actions.jsx";
-import DeleteButton from "./DeleteButton.jsx"; // Import axios
+import DeleteButton from "./DeleteButton.jsx";
+import {triggerToast} from "./Notification.jsx"; // Import axios
 
 function BasicExample({ refreshFlag }) {
     // State to store the items data
@@ -59,21 +60,20 @@ function BasicExample({ refreshFlag }) {
                     <td>{item.price}</td>
                     <td>{item.quantity}</td>
                     <td>
-                        <EditButton 
-                            item={item} 
-                            onItemUpdated={fetchData}
-                        />
-                        <DeleteButton onClick={() => {
-                            // console.log("delete item: " + item.id);
-                            deleteItemById(item.id).then(r => {
-                                if (r.status === 200) {
-                                    console.log("Successfully deleted");
-                                    fetchData(); // Re-fetch data after deletion to update the table
-                                }
-                            }).catch(err => {
-                                console.log("Error deleting item:", err);
-                            });
-                        }}/>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <EditButton item={item} onItemUpdated={fetchData} />
+                            <DeleteButton onClick={() => {
+                                deleteItemById(item.id).then(r => {
+                                    if (r.status === 200) {
+                                        triggerToast(item.itemname + " has been successfully deleted!");
+                                        console.log("Successfully deleted");
+                                        fetchData();
+                                    }
+                                }).catch(err => {
+                                    console.log("Error deleting item:", err);
+                                });
+                            }} />
+                        </div>
                     </td>
                 </tr>
             ))}
