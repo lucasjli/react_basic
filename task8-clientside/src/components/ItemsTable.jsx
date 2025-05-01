@@ -3,9 +3,7 @@ import Table from 'react-bootstrap/Table';
 import EditButton from "./EditButton.jsx";
 import axios from 'axios';
 import store from "../store/index.jsx";
-import { deleteItemById } from "../logic/actions.jsx";
 import DeleteButton from "./DeleteButton.jsx";
-import {triggerToast} from "./Notification.jsx"; // Import axios
 
 function BasicExample({ refreshFlag }) {
     // State to store the items data
@@ -62,17 +60,7 @@ function BasicExample({ refreshFlag }) {
                     <td>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <EditButton item={item} onItemUpdated={fetchData} />
-                            <DeleteButton onClick={() => {
-                                deleteItemById(item.id).then(r => {
-                                    if (r.status === 200) {
-                                        triggerToast(item.itemname + " has been successfully deleted!");
-                                        console.log("Successfully deleted");
-                                        fetchData();
-                                    }
-                                }).catch(err => {
-                                    console.log("Error deleting item:", err);
-                                });
-                            }} />
+                            <DeleteButton item={item} fetchData={fetchData} />
                         </div>
                     </td>
                 </tr>
