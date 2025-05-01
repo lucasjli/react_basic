@@ -3,6 +3,7 @@ import {Col, Row} from "react-bootstrap";
 import {useState, useEffect, forwardRef} from "react";
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
+import {triggerToast} from "./Notification.jsx";
 
 const ItemForm = forwardRef(({ onSubmit, initialData }, ref) => {
     const [formData, setFormData] = useState({
@@ -11,9 +12,6 @@ const ItemForm = forwardRef(({ onSubmit, initialData }, ref) => {
         price: '',
         quantity: ''
     });
-
-    const [showToast, setShowToast] = useState(false);
-    const [toastMessage, setToastMessage] = useState('');
 
     useEffect(() => {
         if (initialData) {
@@ -36,8 +34,9 @@ const ItemForm = forwardRef(({ onSubmit, initialData }, ref) => {
 
     const validateForm = () => {
         if (!Number.isInteger(Number(formData.quantity))) {
-            setToastMessage('Quantity should be an integer');
-            setShowToast(true);
+            // setToastMessage('Quantity should be an integer');
+            // setShowToast(true);
+            triggerToast('Quantity should be an integer')
             return false;
         }
         return true;
@@ -110,20 +109,6 @@ const ItemForm = forwardRef(({ onSubmit, initialData }, ref) => {
                     </Col>
                 </Form.Group>
             </Form>
-
-            <ToastContainer position="top-end" className="p-3">
-                <Toast 
-                    show={showToast} 
-                    onClose={() => setShowToast(false)} 
-                    delay={3000} 
-                    autohide
-                >
-                    <Toast.Header>
-                        <strong className="me-auto">Error</strong>
-                    </Toast.Header>
-                    <Toast.Body>{toastMessage}</Toast.Body>
-                </Toast>
-            </ToastContainer>
         </>
     );
 });
