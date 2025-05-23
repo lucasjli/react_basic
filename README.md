@@ -1,5 +1,4 @@
-# COMPX575 
-Due on **Friday the 2nd of May at midday**.
+# React 
 
 # Task Goal
 Learn about:
@@ -8,9 +7,6 @@ Learn about:
  *  HTML , Cascading Style Sheets (CSS), JavaScript
  *	Bootstrap for designing [Optional]
  *	jQuery [Optional]
-
-### Application Description
-You will work in group of 2-3. You are tasked with building a full-stack item management application. You will continue from Task 7 (your RESTful CRUD API backend) and now develop a complete front-end in React to interact with your backend via Axios.
 
 ###Core Functionalities:
 Each group member must contribute equally. The application must:
@@ -88,19 +84,6 @@ npm run dev
 * You will also likely to want to install some extra dependencies using npm install command. Remember to include --save, so your package.json file is updated appropriately. 
 * You will also benefit from installing the React developer tools extension in your web browser, which gives you some additional abilities to inspect elements with respect to the React framework.  
 * Directory structure is really important. You need to create a components folder and css folder inside the src folder.  All your JavaScript files should be in the components folder and CSS files in the css folder.
-
-
-### What to Submit and How
-All pertinent material you have developed for this assignment must be submitted electronically using Moodle and your COMPX575 repository.  The submitted files must be sufficient to recreate your app by running npm install followed by npm start. Do not include your node_modules directory, as this is not needed to reconstitute your project using npm install. Moreover, it could contain binaries files specific to the computer platform you developed the assignment on that are incompatible with the computer system used to test your submitted assignment solution. 
-You may choose between submitting a ZIP file. Marks will be deducted for submitted assignments that do meet these requirements.
-
-
-## Grading
-This task is worth as much as 5% of your final grade and is marked out of 5.
-* Display list of items - 1 mark
-* Processing form to add items - 1 mark
-* Delete items - 1 mark
-* Updte items - 1 mark
 * Appropriate folder structure - 1 mark
 
 ## Submission
